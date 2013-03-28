@@ -326,6 +326,7 @@ def process_job(cups_connection, cpp, printer, job):
         options = json.loads(urllib2.urlopen(request).read())
         if 'request' in options: del options['request']
         options = dict( (str(k), str(v)) for k, v in options.items() )
+        LOGGER.info('JOB: ticketUrl = ' + job['ticketUrl'].encode('unicode-escape'))
 
         cpp.finish_job(job['id'])
 
